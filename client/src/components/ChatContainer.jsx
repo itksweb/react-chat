@@ -15,9 +15,8 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-const burl = import.meta.env.PROD? "https://react-chat-backend-two.vercel.app": "localhost"
-const url = "";
-const socketio = socketIOClient(`${burl}:${port}`);
+const burl = import.meta.env.PROD? "https://react-chat-backend-two.vercel.app": "localhost:5720"
+const socketio = socketIOClient(burl);
 
 export default function ChatContainer({ logout }) {
   const [chats, setChats] = useState([]);
