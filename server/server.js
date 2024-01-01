@@ -11,7 +11,7 @@ const io = new Server(server, {
 });
 
 app.get("/", (req, res) => {
-  res.send("react chat app back end");
+  res.send("react chat app backend");
 });
 
 io.on("connection", (socket) => {
