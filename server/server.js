@@ -25,5 +25,7 @@ io.on("connection", (socket) => {
     console.log("disconnected");
   });
 });
-export const port = process.env.PORT || 5720;
+
+const port = process.env.PORT || 5720;
 server.listen(port, () => console.log(`Listening to port ${port}`));
+module.exports = port;
