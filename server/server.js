@@ -2,6 +2,7 @@ const express = require("express");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const app = express();
+const port = process.env.PORT || 5720;
 
 const server = createServer(app);
 const io = new Server(server, {
@@ -11,7 +12,7 @@ const io = new Server(server, {
 });
 
 app.get("/", (req, res) => {
-  res.send("react chat app backend");
+  res.send(process.env.PORT? "process.env.PORT": "none");
 });
 
 io.on("connection", (socket) => {
@@ -26,6 +27,6 @@ io.on("connection", (socket) => {
   });
 });
 
-const port = process.env.PORT || 5720;
+
 server.listen(port, () => console.log(`Listening to port ${port}`));
 module.exports = port;
