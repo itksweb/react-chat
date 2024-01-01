@@ -15,7 +15,7 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-const url = "localhost" || "https://react-chat-backend-two.vercel.app";
+const url = "https://react-chat-backend-two.vercel.app";
 const socketio = socketIOClient(`${url}:${port}`);
 
 export default function ChatContainer({ logout }) {
