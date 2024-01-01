@@ -12,7 +12,7 @@ const io = new Server(server, {
 });
 
 app.get("/", (req, res) => {
-  res.send(process.env.PORT? "process.env.PORT": "none");
+  res.send( "server accessible");
 });
 
 io.on("connection", (socket) => {
