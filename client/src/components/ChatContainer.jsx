@@ -3,6 +3,7 @@ import socketIOClient from "socket.io-client";
 import InputText from "./InputText";
 import ChatList from "./ChatList";
 import { timestampToDate, getAllChats, hourMinSec } from "../libs/helper.js";
+import { port } from "../../../server/server.js";
 import getDb from "../libs/db.js";
 import {
   getDocs,
@@ -13,7 +14,9 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-const socketio = socketIOClient("http://localhost:5720");
+const socketio = socketIOClient(
+  `https://react-chat-backend-two.vercel.app:${port}`
+);
 
 export default function ChatContainer({ logout }) {
   const [chats, setChats] = useState([]);
