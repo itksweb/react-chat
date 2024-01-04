@@ -23,7 +23,6 @@ export default function ChatContainer({ logout }) {
   const avatar = localStorage.getItem("avatar");
   const user = localStorage.getItem("user");
   const collName = "Messages";
-  console.log(import.meta.env.VITE_liveServer);
 
   useEffect(() => {
     socketio.on("chat", (senderChats) => {
