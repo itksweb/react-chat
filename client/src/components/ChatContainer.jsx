@@ -3,8 +3,6 @@ import socketIOClient from "socket.io-client";
 import InputText from "./InputText";
 import ChatList from "./ChatList";
 import { timestampToDate, getAllChats, hourMinSec } from "../libs/helper.js";
-//import { port } from "../../../server/server.js";
-const port = 5720;
 import getDb from "../libs/db.js";
 import {
   getDocs,
@@ -15,14 +13,17 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
-const url = "localhost" || "https://react-chat-backend-two.vercel.app";
-const socketio = socketIOClient(`${url}:${port}`);
+const url = import.meta.env.PROD
+  ? import.meta.env.VITE_liveServer
+  : "localhost:5720";
+const socketio = socketIOClient(url);
 
 export default function ChatContainer({ logout }) {
   const [chats, setChats] = useState([]);
   const avatar = localStorage.getItem("avatar");
   const user = localStorage.getItem("user");
   const collName = "Messages";
+  console.log(import.meta.env.VITE_liveServer);
 
   useEffect(() => {
     socketio.on("chat", (senderChats) => {
